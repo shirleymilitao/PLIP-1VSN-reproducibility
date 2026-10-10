@@ -1,0 +1,14 @@
+Interaction,Residue,Residue_ID,Chain,Ligand,Ligand_ID,Distance_A
+Hydrophobic,ASP,61,A,NFT,283,3.67
+Hydrophobic,TYR,67,A,NFT,283,3.73
+Hydrophobic,TYR,67,A,NFT,283,3.84
+Hydrophobic,ALA,133,A,NFT,283,3.97
+Hydrogen bond,GLN,19,A,NFT,283,3.11
+Hydrogen bond,CYS,25,A,NFT,283,3.09
+Hydrogen bond,ASP,61,A,NFT,283,2.99
+Hydrogen bond,ASP,61,A,NFT,283,2.99
+Hydrogen bond,GLY,66,A,NFT,283,3.18
+Hydrogen bond,GLY,66,A,NFT,283,2.95
+Hydrogen bond,ASN,158,A,NFT,283,2.92
+Halogen bond,TYR,67,A,NFT,283,3.37
+Halogen bond,LEU,157,A,NFT,283,3.24
