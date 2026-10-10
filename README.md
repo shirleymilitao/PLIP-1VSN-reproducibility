@@ -119,6 +119,12 @@ Os testes automáticos confirmaram:
 
 Todos os testes automáticos foram aprovados.
 
+#### Validação independente via GitHub/Google Colab
+
+Após a publicação do projeto no GitHub, o notebook foi aberto diretamente a partir do repositório por meio do botão **Open in Colab** e executado integralmente em uma nova sessão do Google Colab.
+
+O workflow completou todas as etapas previstas e os testes automáticos foram aprovados, reproduzindo os resultados esperados. Esse teste confirma que o workflow computacional disponibilizado no repositório pode ser executado a partir do notebook publicado, sem depender da sessão original utilizada durante seu desenvolvimento.
+
 ## Visualização dos resultados
 
 A figura abaixo apresenta o perfil de interações identificado pelo PLIP para os resíduos da catepsina K envolvidos na interação com o ligante NFT.
