@@ -1,4 +1,5 @@
 # Reproducibility of Protein–Ligand Interactions in PDB 1VSN using PLIP
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/shirleymilitao/PLIP-1VSN-reproducibility/blob/main/notebooks/PLIP_1VSN_Reprodutibilidade.ipynb)
 
 Reprodução computacional do perfil de interações proteína–ligante da estrutura cristalográfica **PDB 1VSN**, utilizando o **Protein–Ligand Interaction Profiler (PLIP)**.
 
