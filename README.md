@@ -7,9 +7,9 @@ Reprodução computacional do perfil de interações proteína–ligante da estr
 
 Este projeto foi desenvolvido como um exercício de **bioinformática reprodutível**, com o objetivo de reproduzir uma parte delimitada da análise apresentada por Salentin et al. (2015).
 
-O estudo concentra-se no perfil de interações entre a **catepsina K humana** e o ligante **NFT** presente na estrutura cristalográfica **PDB 1VSN**.
+O estudo concentra-se no perfil de interações entre a **catepsina K humana** e o ligante **NFT** na pose cristalográfica da estrutura **PDB 1VSN**, utilizando o **PLIP 3.0.1**.
 
-O objetivo não é reproduzir integralmente o artigo original, mas avaliar a reprodutibilidade de uma análise estrutural específica utilizando uma versão atual do PLIP.
+O objetivo não é reproduzir integralmente o artigo original, mas avaliar se características relevantes do perfil de interações da pose cristalográfica podem ser reproduzidas com uma versão atual do PLIP, documentando também eventuais divergências em relação ao trabalho de referência.
 
 ## Pergunta científica
 
@@ -37,18 +37,21 @@ DOI: 10.1093/nar/gkv315
 
 O experimento foi organizado nas seguintes etapas:
 
-1. preparação do ambiente computacional;
-2. download automático da estrutura PDB 1VSN;
-3. inspeção da estrutura;
-4. identificação do ligante NFT;
-5. identificação exploratória dos resíduos próximos ao ligante;
-6. análise das interações proteína–ligante com PLIP;
-7. extração programática dos resultados;
-8. organização e exportação dos resultados em formato CSV;
-9. geração das visualizações;
-10. investigação das moléculas de água cristalográficas;
-11. registro das versões do ambiente computacional;
-12. execução de testes automáticos de reprodutibilidade.
+1. preparação do projeto e do ambiente computacional;
+2. download reprodutível da estrutura PDB 1VSN e verificação da identidade do arquivo por SHA-256;
+3. inspeção da estrutura e identificação do ligante NFT;
+4. análise exploratória da proximidade proteína–ligante;
+5. execução do PLIP 3.0.1;
+6. extração programática das interações;
+7. construção e exportação das tabelas de resultados, incluindo uma tabela detalhada com pares atômicos e parâmetros geométricos;
+8. inspeção da estrutura protonada gerada pelo PLIP e investigação de casos específicos de protonação e geometria;
+9. verificação separada do contato covalente CYS25–NFT;
+10. visualização e sumarização das interações não covalentes;
+11. investigação das moléculas de água e dos critérios de classificação de `water bridges`;
+12. registro das versões do ambiente computacional;
+13. testes automáticos de reprodutibilidade e verificação das identidades e geometrias das interações;
+14. comparação dos resultados com o trabalho de referência;
+15. verificação dos produtos finais e avaliação da reprodutibilidade.
 
 ## Resultados
 
@@ -74,7 +77,7 @@ Foram identificados **8 resíduos distintos** envolvidos nas interações:
 
 Entre esses resíduos, **ASP61** e **TYR67** apresentaram o maior número de registros de interação.
 
-ASP61 apresentou duas ligações de hidrogênio e um contato hidrofóbico.
+ASP61 apresentou dois registros de ligação de hidrogênio para o mesmo par atômico ASP61 OD2 ↔ NFT N63, com os papéis de doador/aceptor invertidos, além de um contato hidrofóbico. Esses dois registros foram preservados conforme a saída do PLIP, mas não são interpretados automaticamente como duas ligações de hidrogênio físicas independentes.
 
 TYR67 apresentou dois contatos hidrofóbicos e uma ligação de halogênio.
 
@@ -84,7 +87,7 @@ A estrutura 1VSN contém **269 moléculas de água cristalográficas**.
 
 Na análise geométrica realizada neste projeto:
 
-- 14 águas foram encontradas a até 5 Å do ligante NFT;
+- 14 águas apresentaram pelo menos um átomo a até 5 Å de qualquer átomo do ligante NFT;
 - 11 apresentaram distância mínima ao NFT dentro do intervalo de 2,5–4,1 Å observado nos parâmetros do PLIP 3.0.1.
 
 Apesar da presença de moléculas de água próximas ao ligante, nenhuma interação foi classificada como `Water Bridge` pelo PLIP 3.0.1 nesta execução.
@@ -109,21 +112,24 @@ Essa divergência foi mantida e documentada como parte do próprio resultado da 
 
 O notebook foi posteriormente executado do início ao fim em ambiente limpo.
 
-Os testes automáticos confirmaram:
+Os testes automáticos verificaram:
 
 - 13 registros totais de interação;
-- 7 ligações de hidrogênio;
+- 7 registros de ligações de hidrogênio;
 - 4 contatos hidrofóbicos;
 - 2 ligações de halogênio;
-- 8 resíduos únicos.
+- 8 resíduos únicos;
+- identidade dos pares atômicos dos 4 contatos hidrofóbicos;
+- identidade, distâncias e ângulos das 2 ligações de halogênio;
+- identidade dos pares atômicos, papéis de doador/aceptor, distâncias D–A e H–A e ângulos D–H···A dos 7 registros de ligações de hidrogênio.
 
-Todos os testes automáticos foram aprovados.
+Todas as verificações automatizadas foram concluídas com sucesso. Esses testes avaliam a consistência interna e a reprodutibilidade computacional do workflow, mas não constituem validação experimental das interações moleculares.
 
-#### Validação independente via GitHub/Google Colab
+#### Verificação independente via GitHub/Google Colab
 
 Após a publicação do projeto no GitHub, o notebook foi aberto diretamente a partir do repositório por meio do botão **Open in Colab** e executado integralmente em uma nova sessão do Google Colab.
 
-O workflow completou todas as etapas previstas e os testes automáticos foram aprovados, reproduzindo os resultados esperados. Esse teste confirma que o workflow computacional disponibilizado no repositório pode ser executado a partir do notebook publicado, sem depender da sessão original utilizada durante seu desenvolvimento.
+O workflow completou todas as etapas previstas e as verificações automatizadas foram concluídas com sucesso, reproduzindo os resultados computacionais esperados. A execução em uma nova sessão fornece evidência de que o workflow disponibilizado no repositório pode ser executado a partir do notebook publicado sem depender do estado da sessão original utilizada durante seu desenvolvimento.
 
 ## Visualização dos resultados
 
@@ -135,7 +141,7 @@ O gráfico mostra que diferentes resíduos podem participar de diferentes catego
 
 ## Ambiente computacional
 
-A execução utilizada para validar este experimento apresentou o seguinte ambiente:
+A execução utilizada para verificar a reprodutibilidade computacional deste experimento apresentou o seguinte ambiente:
 
 | Ferramenta | Versão |
 |---|---:|
@@ -155,6 +161,8 @@ As versões observadas durante a execução também estão documentadas em:
 `environment/environment_versions.txt`
 
 O Open Babel constitui uma dependência importante do PLIP e sua instalação pode variar entre sistemas operacionais.
+
+O registro dessas versões aumenta a rastreabilidade e favorece a reprodutibilidade computacional, mas não garante, isoladamente, a reconstrução futura exata do ambiente. Dependências de sistema, bibliotecas transitivas, sistema operacional e alterações na imagem-base do Google Colab também podem influenciar a execução.
 
 ## Como reproduzir
 
@@ -180,12 +188,12 @@ O próprio notebook realiza o download da estrutura PDB 1VSN, instala as ferrame
 
 Ao final da execução deverá aparecer:
 
-`Todos os testes foram aprovados.`
+`Todas as verificações automatizadas foram concluídas com sucesso.
 
-Os principais valores esperados para o ambiente validado são:
+Os principais valores esperados para a execução verificada são:
 
 - 13 registros de interação;
-- 7 ligações de hidrogênio;
+- 7 registros de ligações de hidrogênio;
 - 4 contatos hidrofóbicos;
 - 2 ligações de halogênio;
 - 8 resíduos únicos.
@@ -214,7 +222,7 @@ A presença das ligações de halogênio representa uma concordância qualitativ
 
 Por outro lado, as pontes de água descritas na literatura não foram identificadas pelo PLIP 3.0.1 nesta execução. Essa diferença foi investigada e documentada, sem atribuição de uma causa não demonstrada pelos dados.
 
-O workflow computacional foi executado novamente em ambiente limpo e os resultados esperados foram recuperados pelos testes automáticos.
+O workflow computacional foi executado novamente em ambiente limpo, e as verificações automatizadas reproduziram os resultados computacionais esperados quanto às contagens, identidades dos pares atômicos e parâmetros geométricos avaliados.
 
 Dessa forma, o projeto fornece um exemplo delimitado de avaliação de reprodutibilidade em bioinformática estrutural, incluindo não apenas os resultados concordantes, mas também uma divergência observada durante a reprodução.
 
@@ -236,7 +244,8 @@ PLIP-1VSN-reproducibility/
 ├── plip_results/
 │   ├── 1VSN_report.txt
 │   ├── 1VSN_protonated.pdb
-│   └── interactions_1VSN.csv
+│   ├── interactions_1VSN.csv
+│   └── interactions_1VSN_detailed.csv
 │
 ├── figures/
 │   └── 1VSN_interactions.png
@@ -250,6 +259,6 @@ PLIP-1VSN-reproducibility/
 
 - `notebooks/`: notebook principal contendo o workflow completo;
 - `data/`: estrutura PDB utilizada como dado de entrada;
-- `plip_results/`: relatório produzido pelo PLIP, estrutura protonada e tabela estruturada das interações;
+- `plip_results/: relatório produzido pelo PLIP, estrutura protonada, tabela resumida e tabela detalhada das interações;
 - `figures/`: visualizações produzidas durante a análise;
 - `environment/`: versões das ferramentas e dependências utilizadas no experimento.
