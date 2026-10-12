@@ -1,0 +1,14 @@
+Interaction,Residue,Residue_ID,Chain,Ligand,Ligand_ID,Distance_A,Protein_atom_ID,Ligand_atom_ID,Protein_is_donor,Distance_HA_A,Donor_angle_deg,Acceptor_angle_deg,Protein_atom,Ligand_atom
+Hydrophobic,ASP,61,A,NFT,283,3.67,448,1639,,,,,CB,C47
+Hydrophobic,TYR,67,A,NFT,283,3.73,482,1622,,,,,CE1,C07
+Hydrophobic,TYR,67,A,NFT,283,3.84,481,1636,,,,,CD2,C21
+Hydrophobic,ALA,133,A,NFT,283,3.97,994,1636,,,,,CB,C21
+Hydrogen bond,GLN,19,A,NFT,283,3.11,153,1649,True,2.16,160.05,,NE2,N45
+Hydrogen bond,CYS,25,A,NFT,283,3.09,183,1649,True,2.21,146.9,,N,N45
+Hydrogen bond,ASP,61,A,NFT,283,2.99,451,1645,True,2.26,134.61,,OD2,N63
+Hydrogen bond,ASP,61,A,NFT,283,2.99,451,1645,False,1.98,170.22,,OD2,N63
+Hydrogen bond,GLY,66,A,NFT,283,3.18,473,1631,False,2.33,140.42,,O,N24
+Hydrogen bond,GLY,66,A,NFT,283,2.95,470,1638,True,2.05,150.59,,N,O23
+Hydrogen bond,ASN,158,A,NFT,283,2.92,1199,1629,False,1.95,167.45,,O,N26
+Halogen bond,TYR,67,A,NFT,283,3.37,485,1627,,,156.7,100.53,OH,F36
+Halogen bond,LEU,157,A,NFT,283,3.24,1191,1628,,,141.32,129.13,O,F37
